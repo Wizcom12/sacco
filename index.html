@@ -24,14 +24,17 @@
     </style>
 </head>
 <body class="font-sans">
-    <!-- Navigation -->
+  
+             <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold text-green-600">Busaiga SACCO</div> 
-                     
-                    <button id="mobile-menu-button" class="text-indigo-700 hover:text-indigo-600">
+                    <div class="text-2xl font-bold text-indigo-600">Busaiga SACCO</div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -410,7 +413,7 @@
         }
 
         // Update the carousel text every 10 seconds to allow more viewing time
-        setInterval(updateCarouselText, 10000);
+        setInterval(updateCarouselText, 8000);
 
         // Initialize the carousel text on page load
         updateCarouselText();
