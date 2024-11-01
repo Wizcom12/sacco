@@ -46,8 +46,8 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-white hover:text-blue-200 transition">Home</a>
-                    <a href="loans.html" class="text-white hover:text-blue-200 transition">Loans</a>
+                    <a href="index.html" class="text-white hover:text-blue-200 transition">Home</a>
+                  
                     <a href="savings.html" class="text-white hover:text-blue-200 transition">Savings</a>
                     <a href="service_centers.html" class="text-white hover:text-blue-200 transition">Service Centers</a>
                     <a href="mobile.html" class="text-white hover:text-blue-200 transition">Payments</a>
@@ -506,6 +506,75 @@
 </footer>
 
 <script>
+
+           
+         // Navigation items for search
+        const navigationItems = [
+            { title: 'Home', path: '#' },
+            { title: 'Loans', path: 'loans.html' },
+            { title: 'Savings', path: 'savings.html' },
+            { title: 'Service Centers', path: 'service_centers.html' },
+            { title: 'Payments', path: 'mobile.html' },
+            { title: 'About Us', path: 'about.html' },
+            { title: 'Gallery', path: 'gallery.html' },
+            { title: 'Contact', path: '#contact' }
+        ];
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Search functionality
+        const searchPanel = document.getElementById('search-panel');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const desktopSearchButton = document.getElementById('desktop-search-button');
+        const mobileSearchButton = document.getElementById('mobile-search-button');
+
+        // Toggle search panel
+        function toggleSearch() {
+            searchPanel.classList.toggle('hidden');
+            if (!searchPanel.classList.contains('hidden')) {
+                searchInput.focus();
+            }
+        }
+
+        desktopSearchButton?.addEventListener('click', toggleSearch);
+        mobileSearchButton?.addEventListener('click', toggleSearch);
+
+        // Close search panel when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!searchPanel.contains(event.target) && 
+                !desktopSearchButton?.contains(event.target) && 
+                !mobileSearchButton?.contains(event.target)) {
+                searchPanel.classList.add('hidden');
+            }
+        });
+
+        // Handle search
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = navigationItems.filter(item => 
+                item.title.toLowerCase().includes(query)
+            );
+            
+            searchResults.innerHTML = '';
+            
+            if (query) {
+                if (filtered.length > 0) {
+                    filtered.forEach(result => {
+                        const link = document.createElement('a');
+                        link.href = result.path;
+                        link.className = 'block p-2 hover:bg-gray-100 text-gray-700';
+                        link.textContent = result.title;
+                        searchResults.appendChild(link);
+                    });
+                } else {
+                    searchResults.innerHTML = '<div class="p-2 text-gray-500">No results found</div>';
+                }
+            }
+        });
     // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
