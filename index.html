@@ -13,31 +13,47 @@
 
     <style>
         @keyframes fadeInOut {
-            0%, 10%, 90%, 100% { opacity: 0; transform: translateY(20px); } /* Start and end: Invisible, moved down */
-            20%, 80% { opacity: 1; transform: translateY(0); } /* Fully visible in place */
+            0%, 10%, 90%, 100% { opacity: 0; transform: translateY(20px); }
+            20%, 80% { opacity: 1; transform: translateY(0); }
         }
 
         .carousel-text {
             animation: fadeInOut 10s infinite;
             transition: opacity 1s ease, transform 1s ease;
         }
+
+        .search-results {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .search-results.active {
+            max-height: 300px;
+        }
     </style>
 </head>
 <body class="font-sans">
-  
-             <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
-                <div class="flex items-center">
+                <div class="flex items-center space-x-3">
+                    <!-- Logo -->
+                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-12 w-auto object-contain">
                     <div class="text-2xl font-bold text-indigo-600">Busaiga SACCO</div>
                 </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+
+                <!-- Mobile menu button and search (for mobile) -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="mobile-search-button" class="text-gray-700 hover:text-indigo-600">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
                     <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
+
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
@@ -47,10 +63,26 @@
                     <a href="mobile.html" class="text-gray-700 hover:text-indigo-600 transition">Payments</a>
                     <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">About Us</a>
                     <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 transition">Gallery</a>
-                    
                     <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                    
+                    <!-- Desktop Search Button -->
+                    <div class="relative">
+                        <button id="desktop-search-button" class="text-gray-700 hover:text-indigo-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            <!-- Search Panel (Initially Hidden) -->
+            <div id="search-panel" class="hidden absolute right-4 top-16 w-72 bg-white rounded-lg shadow-xl z-50">
+                <div class="p-3">
+                    <input type="text" id="search-input" placeholder="Search site..." 
+                           class="w-full p-2 border rounded-lg focus:outline-none focus:border-indigo-500">
+                    <div id="search-results" class="mt-2 max-h-48 overflow-y-auto"></div>
+                </div>
+            </div>
+
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
@@ -61,13 +93,11 @@
                     <a href="mobile.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Payments</a>
                     <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">About Us</a>
                     <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Gallery</a>
-                    
                     <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Contact Us</a>
                 </div>
             </div>
         </div>
     </nav>
-
    
 
    <!-- Carousel Section -->
