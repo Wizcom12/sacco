@@ -11,7 +11,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <meta name="description" content="Explore Busaiga SACCO's diverse range of savings products tailored to secure your financial future, including voluntary savings, group savings, fixed deposits, and more.">
+<style>
+         .search-results {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
 
+        .search-results.active {
+            max-height: 300px;
+        }
+</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="font-sans">
