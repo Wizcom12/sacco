@@ -1,73 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about Busaiga SACCO, our mission, values, and performance. We promote financial inclusion through affordable savings and credit services.">
     <meta name="keywords" content="Busaiga SACCO, Kabarole, kabarole district, nyaika hotel, mountains of the moon university, mountains of the moon hotel,  financial cooperative, savings, credit services, Western Uganda, uganda, busaiga, sacco, saccos, money, money and banking, loans, fortportal, tourism city, banking, microfinance">
-    <title>Busaiga SACCO - Your Trusted Financial Partner</title>
+    <title>Service Centers - Busaiga SACCO</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        @keyframes fadeInOut {
-            0%, 10%, 90%, 100% { opacity: 0; transform: translateY(20px); }
-            20%, 80% { opacity: 1; transform: translateY(0); }
-        }
-
-        .carousel-text {
-            animation: fadeInOut 10s infinite;
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .search-results {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .search-results.active {
-            max-height: 300px;
+        .hero-bg {
+            background-image: url('2.png'); /* Update with your hero image path */
+            background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
-<body class="font-sans">
+
+<body class="antialiased">
+
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
+   <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
                 <div class="flex items-center space-x-3">
-                    <!-- Logo -->
-                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-12 w-auto object-contain">
-                    <div class="text-2xl font-bold text-indigo-600">Busaiga SACCO</div>
+                    <!-- Logo with border radius -->
+                    <img src="/api/placeholder/40/40" alt="Busaiga SACCO Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white">
+                    <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
                 </div>
 
                 <!-- Mobile menu button and search (for mobile) -->
                 <div class="md:hidden flex items-center space-x-4">
-                    <button id="mobile-search-button" class="text-gray-700 hover:text-indigo-600">
+                    <button id="mobile-search-button" class="text-white hover:text-blue-200">
                         <i class="fas fa-search text-xl"></i>
                     </button>
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
+                    <button id="mobile-menu-button" class="text-white hover:text-blue-200">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
-                    <a href="loans.html" class="text-gray-700 hover:text-indigo-600 transition">Loans</a>
-                    <a href="savings.html" class="text-gray-700 hover:text-indigo-600 transition">Savings</a>
-                    <a href="service_centers.html" class="text-gray-700 hover:text-indigo-600 transition">Service Centers</a>
-                    <a href="mobile.html" class="text-gray-700 hover:text-indigo-600 transition">Payments</a>
-                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 transition">About Us</a>
-                    <a href="gallery.html" class="text-gray-700 hover:text-indigo-600 transition">Gallery</a>
-                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+                    <a href="index.html" class="text-white hover:text-blue-200 transition">Home</a>
+                    <a href="loans.html" class="text-white hover:text-blue-200 transition">Loans</a>
+                    <a href="savings.html" class="text-white hover:text-blue-200 transition">Savings</a>
+                  
+                    <a href="mobile.html" class="text-white hover:text-blue-200 transition">Payments</a>
+                    <a href="about.html" class="text-white hover:text-blue-200 transition">About Us</a>
+                    <a href="gallery.html" class="text-white hover:text-blue-200 transition">Gallery</a>
+                    <a href="#contact" class="text-white hover:text-blue-200 transition">Contact</a>
                     
                     <!-- Desktop Search Button -->
                     <div class="relative">
-                        <button id="desktop-search-button" class="text-gray-700 hover:text-indigo-600">
+                        <button id="desktop-search-button" class="text-white hover:text-blue-200">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -77,23 +65,23 @@
             <!-- Search Panel (Initially Hidden) -->
             <div id="search-panel" class="hidden absolute right-4 top-16 w-72 bg-white rounded-lg shadow-xl z-50">
                 <div class="p-3">
-                    <input type="text" id="search-input" placeholder="Search site..." 
-                           class="w-full p-2 border rounded-lg focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="search-input" placeholder="Search..." 
+                           class="w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500">
                     <div id="search-results" class="mt-2 max-h-48 overflow-y-auto"></div>
                 </div>
             </div>
 
             <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="hidden md:hidden">
+            <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Home</a>
-                    <a href="loans.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Loans</a>
-                    <a href="savings.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Savings</a>
-                    <a href="service_centers.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Service Centers</a>
-                    <a href="mobile.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Payments</a>
-                    <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">About Us</a>
-                    <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Gallery</a>
-                    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-indigo-600 transition">Contact Us</a>
+                    <a href="#" class="block px-3 py-2 text-white hover:text-blue-200 transition">Home</a>
+                    <a href="loans.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Loans</a>
+                    <a href="savings.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Savings</a>
+                   
+                    <a href="mobile.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Payments</a>
+                    <a href="about.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">About Us</a>
+                    <a href="gallery.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Gallery</a>
+                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact Us</a>
                 </div>
             </div>
         </div>
