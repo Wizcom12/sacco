@@ -32,16 +32,19 @@
 <body class="antialiased">
 
     <!-- Navigation -->
-   <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <!-- Logo with border radius -->
-                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white">
-                    <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-16 w-16 object-cover rounded-full border-2 border-white">
+                    <div class="flex flex-col">
+                        <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+                        <div class="text-sm text-yellow-300 italic">"Kibi kuba munaku"</div>
+                    </div>
                 </div>
 
-                <!-- Mobile menu button and search (for mobile) -->
+                <!-- Mobile menu button and search -->
                 <div class="md:hidden flex items-center space-x-4">
                     <button id="mobile-search-button" class="text-white hover:text-blue-200">
                         <i class="fas fa-search text-xl"></i>
@@ -56,14 +59,13 @@
                     <a href="index.html" class="text-white hover:text-blue-200 transition">Home</a>
                     <a href="loans.html" class="text-white hover:text-blue-200 transition">Loans</a>
                     <a href="savings.html" class="text-white hover:text-blue-200 transition">Savings</a>
-                  
+                    
                     <a href="mobile.html" class="text-white hover:text-blue-200 transition">Payments</a>
                     <a href="events.html" class="text-white hover:text-blue-200 transition">Events</a>
                     <a href="about.html" class="text-white hover:text-blue-200 transition">About Us</a>
                     <a href="gallery.html" class="text-white hover:text-blue-200 transition">Gallery</a>
                     <a href="#contact" class="text-white hover:text-blue-200 transition">Contact</a>
                     
-                    <!-- Desktop Search Button -->
                     <div class="relative">
                         <button id="desktop-search-button" class="text-white hover:text-blue-200">
                             <i class="fas fa-search"></i>
@@ -72,7 +74,7 @@
                 </div>
             </div>
 
-            <!-- Search Panel (Initially Hidden) -->
+            <!-- Search Panel -->
             <div id="search-panel" class="hidden absolute right-4 top-16 w-72 bg-white rounded-lg shadow-xl z-50">
                 <div class="p-3">
                     <input type="text" id="search-input" placeholder="Search..." 
@@ -89,14 +91,14 @@
                     <a href="savings.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Savings</a>
                    
                     <a href="mobile.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Payments</a>
+                    <a href="events.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Events</a>
                     <a href="about.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">About Us</a>
                     <a href="gallery.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Gallery</a>
-                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact Us</a>
+                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero-bg h-screen flex items-center justify-center relative">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
