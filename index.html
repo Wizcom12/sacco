@@ -12,24 +12,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        @keyframes fadeInOut {
-            0%, 10%, 90%, 100% { opacity: 0; transform: translateY(20px); }
-            20%, 80% { opacity: 1; transform: translateY(0); }
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
-
-        .carousel-text {
-            animation: fadeInOut 10s infinite;
+    
+        .fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+        }
+    
+        .carousel-image {
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+    
+        /* Carousel Keyframe for smooth looping fade-in-out animation */
+        .carousel-content {
+            animation: fadeInOut 10s infinite ease-in-out;
             transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .search-results {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .search-results.active {
-            max-height: 300px;
         }
     </style>
 </head>
@@ -37,14 +39,16 @@
     <!-- Navigation -->
     <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <!-- Logo with border radius -->
-                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white">
-                    <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-16 w-16 object-cover rounded-full border-2 border-white">
+                    <div class="flex flex-col">
+                        <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+                        <div class="text-sm text-yellow-300 italic">"Kibi kuba munaku"</div>
+                    </div>
                 </div>
 
-                <!-- Mobile menu button and search (for mobile) -->
+                <!-- Mobile menu button and search -->
                 <div class="md:hidden flex items-center space-x-4">
                     <button id="mobile-search-button" class="text-white hover:text-blue-200">
                         <i class="fas fa-search text-xl"></i>
@@ -56,7 +60,6 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                   
                     <a href="loans.html" class="text-white hover:text-blue-200 transition">Loans</a>
                     <a href="savings.html" class="text-white hover:text-blue-200 transition">Savings</a>
                     <a href="service_centers.html" class="text-white hover:text-blue-200 transition">Service Centers</a>
@@ -66,7 +69,6 @@
                     <a href="gallery.html" class="text-white hover:text-blue-200 transition">Gallery</a>
                     <a href="#contact" class="text-white hover:text-blue-200 transition">Contact</a>
                     
-                    <!-- Desktop Search Button -->
                     <div class="relative">
                         <button id="desktop-search-button" class="text-white hover:text-blue-200">
                             <i class="fas fa-search"></i>
@@ -75,7 +77,7 @@
                 </div>
             </div>
 
-            <!-- Search Panel (Initially Hidden) -->
+            <!-- Search Panel -->
             <div id="search-panel" class="hidden absolute right-4 top-16 w-72 bg-white rounded-lg shadow-xl z-50">
                 <div class="p-3">
                     <input type="text" id="search-input" placeholder="Search..." 
@@ -87,29 +89,38 @@
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    
                     <a href="loans.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Loans</a>
                     <a href="savings.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Savings</a>
                     <a href="service_centers.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Service Centers</a>
                     <a href="mobile.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Payments</a>
-                      <a href="events.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Events</a>
+                    <a href="events.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Events</a>
                     <a href="about.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">About Us</a>
                     <a href="gallery.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Gallery</a>
-                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact Us</a>
+                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-   <!-- Carousel Section -->
-   <div class="relative pt-16" id="carousel">
-    <div class="carousel-container overflow-hidden relative h-[400px] bg-black">
-        <!-- Text content that fades in/out -->
-        <div class="carousel-text absolute inset-0 flex items-center justify-center text-white">
-            <div class="text-center">
-                <h2 id="carousel-header" class="text-4xl font-bold mb-4"></h2>
-                <p id="carousel-paragraph" class="text-xl mb-4"></p>
-                <a id="carousel-button" href="#" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition">Learn More</a>
+   <!-- Hero Section with Carousel -->
+   <div class="relative min-h-screen pt-20 bg-cover bg-center" style="background-image: url('black.jpg');">
+    <div class="bg-opacity-70 bg-black min-h-screen w-full">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="flex items-center justify-center min-h-[80vh]">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-white">
+                    <!-- Carousel Text Content -->
+                    <div class="text-center md:text-left carousel-content">
+                        <h1 id="carousel-header" class="text-4xl md:text-5xl font-bold mb-4">Your Trusted Financial Partner</h1>
+                        <p id="carousel-paragraph" class="text-xl mb-8">Join Busaiga SACCO and enjoy secure savings and reliable credit services.</p>
+                        <a id="carousel-button" href="#" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition">
+                            Learn More
+                        </a>
+                    </div>
+                    <!-- Carousel Image -->
+                    <div class="relative h-[400px] carousel-image">
+                        <img id="carousel-image" src="black.jpg" alt="Carousel Image" class="w-full h-full object-cover rounded-lg shadow-xl">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -559,142 +570,184 @@
     </div>
 </footer>
 
-    <script>
+<script>
+    // Navigation items for search
+    const navigationItems = [
+        { title: 'Home', path: '#' },
+        { title: 'Loans', path: 'loans.html' },
+        { title: 'Savings', path: 'savings.html' },
+        { title: 'Service Centers', path: 'service_centers.html' },
+        { title: 'Payments', path: 'mobile.html' },
+        { title: 'About Us', path: 'about.html' },
+        { title: 'Gallery', path: 'gallery.html' },
+        { title: 'Contact', path: '#contact' }
+    ];
 
+    // Carousel data
+    const textData = [
+        {
+            header: "Welcome to Busaiga SACCO",
+            paragraph: "Your Trusted Financial Partner",
+            link: "#services",
+            image: "3.jpg"
+        },
+        {
+            header: "Agricultural Loans",
+            paragraph: "Supporting Local Farmers",
+            link: "loans.html",
+            image: "agric.jpg"
+        },
+        {
+            header: "Mobile Banking",
+            paragraph: "Convenient Financial Services",
+            link: "mobile.html",
+            image: "mtn-airtel.jpg"
+        },
+        {
+            header: "Emergency Loans",
+            paragraph: "Quick Solutions in Times of Need",
+            link: "loans.html",
+            image: "emergency.jpg"
+        },
+        {
+            header: "Fixed Deposits",
+            paragraph: "Secure Your Future with Us",
+            link: "savings.html",
+            image: "2.png"
+        },
+        {
+            header: "Kids Savings",
+            paragraph: "Helping You Save for Their Tomorrow",
+            link: "savings.html",
+            image: "kids.jpg"
+        }
+    ];
 
-         // Navigation items for search
-        const navigationItems = [
-            { title: 'Home', path: '#' },
-            { title: 'Loans', path: 'loans.html' },
-            { title: 'Savings', path: 'savings.html' },
-            { title: 'Service Centers', path: 'service_centers.html' },
-            { title: 'Payments', path: 'mobile.html' },
-            { title: 'About Us', path: 'about.html' },
-            { title: 'Gallery', path: 'gallery.html' },
-            { title: 'Contact', path: '#contact' }
-        ];
+    // Search functionality
+    const searchPanel = document.getElementById('search-panel');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const desktopSearchButton = document.getElementById('desktop-search-button');
+    const mobileSearchButton = document.getElementById('mobile-search-button');
 
+    function toggleSearch() {
+        searchPanel.classList.toggle('hidden');
+        if (!searchPanel.classList.contains('hidden')) {
+            searchInput.focus();
+        }
+    }
 
-        // Search functionality
-        const searchPanel = document.getElementById('search-panel');
-        const searchInput = document.getElementById('search-input');
-        const searchResults = document.getElementById('search-results');
-        const desktopSearchButton = document.getElementById('desktop-search-button');
-        const mobileSearchButton = document.getElementById('mobile-search-button');
+    desktopSearchButton?.addEventListener('click', toggleSearch);
+    mobileSearchButton?.addEventListener('click', toggleSearch);
 
-        // Toggle search panel
-        function toggleSearch() {
-            searchPanel.classList.toggle('hidden');
-            if (!searchPanel.classList.contains('hidden')) {
-                searchInput.focus();
+    document.addEventListener('click', (event) => {
+        if (!searchPanel.contains(event.target) && 
+            !desktopSearchButton?.contains(event.target) && 
+            !mobileSearchButton?.contains(event.target)) {
+            searchPanel.classList.add('hidden');
+        }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = navigationItems.filter(item => 
+            item.title.toLowerCase().includes(query)
+        );
+        
+        searchResults.innerHTML = '';
+        
+        if (query) {
+            if (filtered.length > 0) {
+                filtered.forEach(result => {
+                    const link = document.createElement('a');
+                    link.href = result.path;
+                    link.className = 'block p-2 hover:bg-gray-100 text-gray-700';
+                    link.textContent = result.title;
+                    searchResults.appendChild(link);
+                });
+            } else {
+                searchResults.innerHTML = '<div class="p-2 text-gray-500">No results found</div>';
             }
         }
+    });
 
-        desktopSearchButton?.addEventListener('click', toggleSearch);
-        mobileSearchButton?.addEventListener('click', toggleSearch);
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        // Close search panel when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!searchPanel.contains(event.target) && 
-                !desktopSearchButton?.contains(event.target) && 
-                !mobileSearchButton?.contains(event.target)) {
-                searchPanel.classList.add('hidden');
-            }
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const mobileMenuItems = mobileMenu.querySelectorAll('a');
+    mobileMenuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
+    });
 
-        // Handle search
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = navigationItems.filter(item => 
-                item.title.toLowerCase().includes(query)
-            );
-            
-            searchResults.innerHTML = '';
-            
-            if (query) {
-                if (filtered.length > 0) {
-                    filtered.forEach(result => {
-                        const link = document.createElement('a');
-                        link.href = result.path;
-                        link.className = 'block p-2 hover:bg-gray-100 text-gray-700';
-                        link.textContent = result.title;
-                        searchResults.appendChild(link);
-                    });
-                } else {
-                    searchResults.innerHTML = '<div class="p-2 text-gray-500">No results found</div>';
-                }
-            }
-        });
- 
+    // Carousel functionality
+    let currentIndex = 0;
+    const headerElement = document.getElementById("carousel-header");
+    const paragraphElement = document.getElementById("carousel-paragraph");
+    const buttonElement = document.getElementById("carousel-button");
+    const imageElement = document.getElementById("carousel-image");
 
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking menu items
-        const mobileMenuItems = mobileMenu.querySelectorAll('a');
-        mobileMenuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // JavaScript for managing the text
-        const textData = [
-            { header: "Welcome to Busaiga SACCO", paragraph: "Your Trusted Financial Partner", link: "#services" },
-            { header: "Agricultural Loans", paragraph: "Supporting Local Farmers", link: "loans.html" },
-            { header: "Mobile Banking", paragraph: "Convenient Financial Services", link: "mobile.html" },
-            { header: "Emergency Loans", paragraph: "Quick Solutions in Times of Need", link: "loans.html" },
-            { header: "Fixed Deposits", paragraph: "Secure Your Future with Us", link: "savings.html" },
-            { header: "Kids Savings", paragraph: "Helping You Save for Their Tomorrow", link: "savings.html" }
-        ];
-
-        let currentIndex = 0;
-        const headerElement = document.getElementById("carousel-header");
-        const paragraphElement = document.getElementById("carousel-paragraph");
-        const buttonElement = document.getElementById("carousel-button");
-
-        // Shuffle the textData array, keeping the first item fixed
-        function shuffleText(data) {
-            for (let i = data.length - 1; i > 1; i--) {
-                const j = Math.floor(Math.random() * (i - 1)) + 1; // Shuffle only from index 1 onward
-                [data[i], data[j]] = [data[j], data[i]];
-            }
+    function shuffleText(data) {
+        for (let i = data.length - 1; i > 1; i--) {
+            const j = Math.floor(Math.random() * (i - 1)) + 1;
+            [data[i], data[j]] = [data[j], data[i]];
         }
+    }
 
-        // Keep the first item fixed and shuffle the rest
-        const firstItem = textData[0];
-        const remainingItems = textData.slice(1);
+    const firstItem = textData[0];
+    const remainingItems = textData.slice(1);
+    shuffleText(remainingItems);
+    const shuffledTextData = [firstItem, ...remainingItems];
 
-        shuffleText(remainingItems);
-        const shuffledTextData = [firstItem, ...remainingItems];
+    function updateCarouselContent() {
+        const content = shuffledTextData[currentIndex];
 
-        function updateCarouselText() {
-            headerElement.textContent = shuffledTextData[currentIndex].header;
-            paragraphElement.textContent = shuffledTextData[currentIndex].paragraph;
-            buttonElement.href = shuffledTextData[currentIndex].link; // Update button link
+        // Fade out both text and image together
+        headerElement.classList.add("fade-out");
+        paragraphElement.classList.add("fade-out");
+        imageElement.classList.add("fade-out");
 
-            // Move to the next index, wrapping around if necessary
+        setTimeout(() => {
+            // Update content after fade-out
+            headerElement.textContent = content.header;
+            paragraphElement.textContent = content.paragraph;
+            buttonElement.href = content.link;
+            imageElement.src = content.image;
+            imageElement.alt = content.header;
+
+            // Fade in both text and image together
+            headerElement.classList.remove("fade-out");
+            headerElement.classList.add("fade-in");
+            paragraphElement.classList.remove("fade-out");
+            paragraphElement.classList.add("fade-in");
+            imageElement.classList.remove("fade-out");
+            imageElement.classList.add("fade-in");
+
             currentIndex = (currentIndex + 1) % shuffledTextData.length;
-        }
+        }, 500);
+    }
 
-        // Update the carousel text every 10 seconds to allow more viewing time
-        setInterval(updateCarouselText, 5000);
+    // Update carousel every 5 seconds
+    setInterval(updateCarouselContent, 5000);
 
-        // Initialize the carousel text on page load
-        updateCarouselText();
+    // Initialize carousel
+    updateCarouselContent();
 
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-    </script>
+    // Initialize AOS
+    AOS.init({
+        duration: 1200,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+</script>
+
 </body>
 </html>
 
