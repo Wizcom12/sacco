@@ -37,16 +37,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="font-sans">
-      <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
+       <!-- Navigation -->
+    <nav class="bg-blue-600 shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center space-x-3">
-                    <!-- Logo with border radius -->
-                    <img src="logo.html" alt="Busaiga SACCO Logo" class="h-12 w-12 object-cover rounded-full border-2 border-white">
-                    <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-4">
+                    <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-16 w-16 object-cover rounded-full border-2 border-white">
+                    <div class="flex flex-col">
+                        <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
+                        <div class="text-sm text-yellow-300 italic">"Kibi kuba munaku"</div>
+                    </div>
                 </div>
 
-                <!-- Mobile menu button and search (for mobile) -->
+                <!-- Mobile menu button and search -->
                 <div class="md:hidden flex items-center space-x-4">
                     <button id="mobile-search-button" class="text-white hover:text-blue-200">
                         <i class="fas fa-search text-xl"></i>
@@ -62,13 +65,12 @@
                     <a href="loans.html" class="text-white hover:text-blue-200 transition">Loans</a>
                     <a href="savings.html" class="text-white hover:text-blue-200 transition">Savings</a>
                     <a href="service_centers.html" class="text-white hover:text-blue-200 transition">Service Centers</a>
-                  <a href="events.html" class="text-white hover:text-blue-200 transition">Events</a>
-                  
+                    <a href="mobile.html" class="text-white hover:text-blue-200 transition">Payments</a>
+                    <a href="events.html" class="text-white hover:text-blue-200 transition">Events</a>
                     <a href="about.html" class="text-white hover:text-blue-200 transition">About Us</a>
                     <a href="gallery.html" class="text-white hover:text-blue-200 transition">Gallery</a>
                     <a href="#contact" class="text-white hover:text-blue-200 transition">Contact</a>
                     
-                    <!-- Desktop Search Button -->
                     <div class="relative">
                         <button id="desktop-search-button" class="text-white hover:text-blue-200">
                             <i class="fas fa-search"></i>
@@ -77,7 +79,7 @@
                 </div>
             </div>
 
-            <!-- Search Panel (Initially Hidden) -->
+            <!-- Search Panel -->
             <div id="search-panel" class="hidden absolute right-4 top-16 w-72 bg-white rounded-lg shadow-xl z-50">
                 <div class="p-3">
                     <input type="text" id="search-input" placeholder="Search..." 
@@ -93,15 +95,15 @@
                     <a href="loans.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Loans</a>
                     <a href="savings.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Savings</a>
                     <a href="service_centers.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Service Centers</a>
+                   
                     <a href="events.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Events</a>
                     <a href="about.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">About Us</a>
                     <a href="gallery.html" class="block px-3 py-2 text-white hover:text-blue-200 transition">Gallery</a>
-                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact Us</a>
+                    <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-200 transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <div class="pt-16">
         <div class="relative overflow-hidden bg-gradient-to-r from-gray-600 to-gray-800 h-[300px]">
