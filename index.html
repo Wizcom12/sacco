@@ -33,6 +33,47 @@
             animation: fadeInOut 10s infinite ease-in-out;
             transition: opacity 1s ease, transform 1s ease;
         }
+        @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.carousel-container:hover .carousel-slides > div {
+  transform: translateX(0);
+}
+
+/* Custom hover effect for slides */
+.carousel-slides > div:hover {
+  z-index: 1;
+}
+
+/* Smooth sliding transition */
+.carousel-slides {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dot navigation styles */
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgb(199 210 254);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 1.5rem;
+  background-color: rgb(79 70 229);
+}
     </style>
 </head>
 <body class="font-sans">
@@ -44,7 +85,7 @@
                     <img src="logo.jpg" alt="Busaiga SACCO Logo" class="h-16 w-16 object-cover rounded-full border-2 border-white">
                     <div class="flex flex-col">
                         <div class="text-2xl font-bold text-white">Busaiga SACCO</div>
-                        <div class="text-sm text-yellow-300 italic">"Kibi kuba munaku"</div>
+                        <div style="padding-left: 25px;" class="text-sm text-yellow-300 italic">"Kibi kuba munaku"</div>
                     </div>
                 </div>
 
@@ -128,59 +169,131 @@
 
     
 <!-- Why Choose SACCOs Section -->
-<section class="bg-gradient-to-r from-indigo-50 to-blue-50 py-16">
+<section class="bg-gradient-to-r from-indigo-100 via-blue-50 to-indigo-100 py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Why You choose us?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-           
-             <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-indigo-600 text-4xl mb-4">💡</div>
-                <h3 class="text-xl font-bold mb-4">Our Vision</h3>
-                <p class="text-gray-600">To be a leading SACCO providing affordable financial services to its members.</p>
+      <h2 class="text-5xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+        Why Choose Us?
+      </h2>
+      <p class="text-center text-indigo-600 mb-12 max-w-2xl mx-auto opacity-0 animate-fade-in animation-delay-200 text-xl">
+        Experience the difference of community-focused financial services
+      </p>
+  
+      <!-- Carousel Container -->
+      <div class="carousel-container relative max-w-5xl mx-auto"> <!-- Increased max-width -->
+        <!-- Navigation Buttons -->
+        <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-indigo-50 transition-all hover:scale-110 z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white p-3 rounded-full shadow-lg hover:bg-indigo-50 transition-all hover:scale-110 z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+  
+        <!-- Slides Container -->
+        <div class="overflow-hidden rounded-xl bg-white shadow-2xl">
+          <div class="carousel-slides flex transition-transform duration-500 ease-out">
+            <!-- Slide 1 -->
+            <div class="w-full flex-shrink-0 p-10"> <!-- Increased padding -->
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">💡</div> <!-- Larger icon -->
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Our Vision</h3> <!-- Larger heading -->
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium"> <!-- Improved paragraph styling -->
+                  To be a leading SACCO providing affordable financial services to its members.
+                </p>
+                <a href="about.html" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold"> <!-- Larger button -->
+                  Learn More
+                </a>
+              </div>
             </div>
-            
-            
-            <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-indigo-600 text-4xl mb-4"></div>
-                <h3 class="text-xl font-bold mb-4">Community Ownership</h3>
-                <p class="text-gray-600">As a member, you're not just a customer - you're a co-owner. Your voice matters in decision-making, and profits are shared among members through dividends.</p>
+  
+            <!-- Slide 2 -->
+            <div class="w-full flex-shrink-0 p-10">
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">👥</div>
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Community Ownership</h3>
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium">
+                  As a member, you're not just a customer - you're a co-owner. Your voice matters in decision-making, and profits are shared among members through dividends.
+                </p>
+                <a href="#contact" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold">
+                  Contact Us
+                </a>
+              </div>
             </div>
-
-            <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-indigo-600 text-4xl mb-4"></div>
-                <h3 class="text-xl font-bold mb-4">Our Mission</h3>
-                <p class="text-gray-600">To provide sustainable financial saving and credit services that will economically empower the members .</p>
+  
+            <!-- Slide 3 -->
+            <div class="w-full flex-shrink-0 p-10">
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">🎯</div>
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Our Mission</h3>
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium">
+                  To provide sustainable financial saving and credit services that will economically empower the members.
+                </p>
+                <a href="/about" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold">
+                  Discover More
+                </a>
+              </div>
             </div>
-            
-            <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-indigo-600 text-4xl mb-4">💰</div>
-                <h3 class="text-xl font-bold mb-4">Better Interest Rates</h3>
-                <p class="text-gray-600">Enjoy lower interest rates on loans and higher returns on savings. We prioritize member benefits over profit maximization.</p>
+  
+            <!-- Slide 4 -->
+            <div class="w-full flex-shrink-0 p-10">
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">💰</div>
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Better Interest Rates</h3>
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium">
+                  Enjoy lower interest rates on loans and higher returns on savings. We prioritize member benefits over profit maximization.
+                </p>
+                <a href="/about" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold">
+                  See Rates
+                </a>
+              </div>
             </div>
-            <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                <div class="text-indigo-600 text-4xl mb-4">🌱</div>
-                <h3 class="text-xl font-bold mb-4">Local Development</h3>
-                <p class="text-gray-600">Your money stays within the community, helping fund local businesses and development projects that benefit everyone.</p>
+  
+            <!-- Slide 5 -->
+            <div class="w-full flex-shrink-0 p-10">
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">🌱</div>
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Local Development</h3>
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium">
+                  Your money stays within the community, helping fund local businesses and development projects that benefit everyone.
+                </p>
+                <a href="about.html" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold">
+                  Learn More
+                </a>
+              </div>
             </div>
-            <div class="bg-white rounded-lg p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-indigo-600 text-4xl mb-4"></div>
-                <h3 class="text-xl font-bold mb-4">Core Values</h3>
-                <p class="text-gray-600">To put the needs of our members at the heart of our work</p>
-                 <p class="text-gray-600"> To demonstrate fairness, equality of opportunity and respect to all</p>
-                 <p class="text-gray-600">To endeavour and maintain high integrity and professional standards</p>
-                 <p class="text-gray-600"> To be transparent and accountable to members and other stakeholders</p>
+  
+            <!-- Slide 6 -->
+            <div class="w-full flex-shrink-0 p-10">
+              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-10 rounded-lg transform hover:scale-105 transition-all duration-300">
+                <div class="text-7xl mb-8">🤝</div>
+                <h3 class="text-3xl font-bold mb-6 text-indigo-900">Core Values</h3>
+                <p class="text-gray-800 text-xl leading-relaxed mb-8 font-medium">
+                  To put the needs of our members at the heart of our work, demonstrate fairness, maintain high integrity, and be transparent and accountable to members and stakeholders.
+                </p>
+                <a href="about.html" class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg text-lg font-semibold">
+                  About Us
+                </a>
+              </div>
             </div>
+          </div>
         </div>
+  
+        <!-- Dots Navigation -->
+        <div class="flex justify-center gap-3 mt-8" id="dotsContainer"> <!-- Increased gap and margin -->
+        </div>
+      </div>
     </div>
-</section>
-
+  </section>
     <!-- Services Section -->
     <div class="py-12 bg-white" id="services">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl" data-aos="fade-up">
+                <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
                     Our Financial Services
-                </h2>
+                  </h3>
             </div>
             <div class="mt-10">
                 <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -221,7 +334,10 @@
     <!-- Financial Tips Section -->
 <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Smart Financial Tips</h2>
+        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up"></h2>
+        <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+            Smart Financial Tips
+          </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-8" data-aos="fade-up">
                 <h3 class="text-2xl font-bold mb-6 text-indigo-600">Savings Strategies</h3>
@@ -284,7 +400,9 @@
     <div class="bg-gray-50 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900" data-aos="fade-up">Opportunities & Events</h2>
+                <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+                    Opportunities & Events
+                  </h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -332,20 +450,22 @@
     <!-- Success Stories Section -->
 <section class="bg-gray-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Member Success Stories</h2>
+        <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+            Member Success Stories
+          </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
-                <img src="1.jpg" alt="Farmer Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
-                <h3 class="text-xl font-bold mb-2">Sarah's Farm Growth</h3>
+                <img src="success1.jpg" alt="Farmer Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">John's Farm Growth</h3>
                 <p class="text-gray-600">"With an agricultural loan, I expanded my farm from 2 to 10 acres. Now I supply matooke to Fort Portal markets and employ five people."</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="200">
-                <img src="1.jpg" alt="Business Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
-                <h3 class="text-xl font-bold mb-2">John's Shop Success</h3>
-                <p class="text-gray-600">"Starting with a small business loan, I grew my shop from a kiosk to a wholesale business. Regular savings helped me manage seasonal changes."</p>
+                <img src="success2.jpg" alt="Business Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Stephen's Shop Success</h3>
+                <p class="text-gray-600">"Starting with a small business loan, I grew my shop from a kiosk to a larger retail business. Regular savings helped me manage seasonal changes."</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="300">
-                <img src="1.jpg" alt="Education Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
+                <img src="success4.jpg" alt="Education Success Story" class="w-full h-48 object-cover rounded-lg mb-4">
                 <h3 class="text-xl font-bold mb-2">Mary's Education Journey</h3>
                 <p class="text-gray-600">"Through education savings and loans, I've managed to keep my three children in school. My eldest is now at university!"</p>
             </div>
@@ -360,7 +480,10 @@
     <div class="bg-white py-12" id="centers">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900" data-aos="fade-up">Our Service Centers</h2>
+                <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+                     Our Service Centers
+                  </h3>
+              
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Service Center Cards -->
@@ -377,7 +500,7 @@
                     <p class="text-indigo-600">📞 0393 254 487</p>
                 </div>
                 <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                    <img src="busaiga_centre.jpg" alt="Kyakagusa Center" class="w-full h-40 object-cover rounded-lg mb-4">
+                    <img src="kyakagusa.jpg" alt="Kyakagusa Center" class="w-full h-40 object-cover rounded-lg mb-4">
                     <h3 class="font-bold text-lg mb-2">Kyakagusa Center</h3>
                     <p class="text-gray-600">Kyakagusa</p>
                     <p class="text-indigo-600">📞 0393 256 483</p>
@@ -395,7 +518,9 @@
     <!-- Financial Education Resources -->
 <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Financial Education Hub</h2>
+        <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+                   Financial Education Hub  
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="border border-indigo-100 rounded-lg p-6 hover:shadow-lg transition-shadow" data-aos="fade-up">
                 <div class="text-indigo-600 text-4xl mb-4">📊</div>
@@ -433,7 +558,9 @@
 
     <section id="what-we-do" class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 animated" data-aos="fade-up">What We Do</h2>
+            <h3 class="text-4xl font-bold text-center mb-4 text-indigo-900 opacity-0 animate-fade-in">
+                     What We Do!
+            </h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="section animated" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-piggy-bank text-indigo-600 text-4xl mb-4"></i>
@@ -685,6 +812,122 @@
             mobileMenu.classList.add('hidden');
         });
     });
+
+    const carouselSlides = document.querySelector(".carousel-slides");
+  const slides = document.querySelectorAll(".carousel-slides > div");
+  const totalSlides = slides.length;
+  const dotsContainer = document.getElementById("dotsContainer");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  
+  let currentSlide = 0;
+  let autoPlayInterval;
+  let isAutoPlaying = true;
+
+  // Create dot navigation
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  function updateDots() {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+    resetAutoPlay();
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    goToSlide(currentSlide);
+  }
+
+  function startAutoPlay() {
+    isAutoPlaying = true;
+    autoPlayInterval = setInterval(nextSlide, 5000);
+  }
+
+  function resetAutoPlay() {
+    if (isAutoPlaying) {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    }
+  }
+
+  function pauseAutoPlay() {
+    isAutoPlaying = false;
+    clearInterval(autoPlayInterval);
+  }
+
+  // Event Listeners
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    pauseAutoPlay();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    pauseAutoPlay();
+  });
+
+  // Pause autoplay on hover
+  carouselSlides.addEventListener("mouseenter", pauseAutoPlay);
+  carouselSlides.addEventListener("mouseleave", startAutoPlay);
+
+  // Touch support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carouselSlides.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carouselSlides.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) > swipeThreshold) {
+      if (difference > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      pauseAutoPlay();
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      prevSlide();
+      pauseAutoPlay();
+    } else if (e.key === "ArrowRight") {
+      nextSlide();
+      pauseAutoPlay();
+    }
+  });
+
+  // Start autoplay
+  startAutoPlay();
 
     // Carousel functionality
     let currentIndex = 0;
